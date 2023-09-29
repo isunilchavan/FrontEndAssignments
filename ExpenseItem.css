@@ -1,0 +1,25 @@
+.ExpenseItem {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #755376;
+  padding: 20px;
+  border-radius: 10px;
+  margin:20px;
+}
+
+.header {
+  color: #1f1d1d;
+}
+
+.expense-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.expense-list li {
+  margin: 10px 0;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
