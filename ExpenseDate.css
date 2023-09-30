@@ -1,0 +1,13 @@
+
+.date-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #9e4e4e;
+    padding: 10px;
+  }
+  
+  .date {
+    font-size: 18px;
+    font-weight: bold;
+    color: #120202;
+  }
