@@ -1,25 +1,25 @@
 import './ExpenseItem.css';
 
 function ExpenseItem() {
+
+  const expenses = [
+    { name: 'Food', amount: 10, location: 'Grocery Store' },
+    { name: 'Petrol', amount: 100, location: 'Gas Station' },
+    { name: 'Movies', amount: 200, location: 'Movie Theater' },
+    {name: 'Party', amount: 10000, location: 'Bangalore'}
+  ];
+
   return (
     <div className="ExpenseItem">
-    <h2 className="header">Expense Items</h2>
-    <ul className="expense-list">
-      <li>
-        Food Rs 10
-        <span className="location"><br></br>< strong>Location:(Grocery Store)</strong></span>
-        </li>
-      
-      <li>
-        Petrol Rs 100
-        <span className="location"><br></br>< strong>Location:(Gas Station)</strong></span>
-        </li>
-      <li>
-        Movies Rs 200
-        <span className="location"><br></br>< strong>Location:(Movie Theater)</strong></span>
-        </li>
-    </ul>
-  </div>
-);
+      <h2 className="header">Expense Items</h2>
+      <ul className="expense-list">
+        {expenses.map((expense, index) => (
+          <li key={index}>
+            {expense.name} Rs {expense.amount} Location:{expense.location}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 export default ExpenseItem;
