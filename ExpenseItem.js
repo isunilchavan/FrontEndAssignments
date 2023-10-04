@@ -1,25 +1,23 @@
+
+import ExpenseDate from './ExpenseDate.js';
 import './ExpenseItem.css';
 
-function ExpenseItem() {
+function ExpenseItem(props) {
 
-  const expenses = [
-    { name: 'Food', amount: 10, location: 'Grocery Store' },
-    { name: 'Petrol', amount: 100, location: 'Gas Station' },
-    { name: 'Movies', amount: 200, location: 'Movie Theater' },
-    {name: 'Party', amount: 10000, location: 'Bangalore'}
-  ];
-
+  const deleteExpense = () => {
+    console.log('ExpenseDeleted');
+  };
   return (
     <div className="ExpenseItem">
-      <h2 className="header">Expense Items</h2>
-      <ul className="expense-list">
-        {expenses.map((expense, index) => (
-          <li key={index}>
-            {expense.name} Rs {expense.amount} Location:{expense.location}
-          </li>
-        ))}
-      </ul>
+      <ExpenseDate date={props.date} />
+      <div>
+        <h1>{props.name}</h1>
+        <p>Amount: Rs {props.amount}</p>
+        <p>Location: {props.location}</p>
+        <button onClick={deleteExpense}>Delete Expense</button>
+      </div>
     </div>
   );
 }
+
 export default ExpenseItem;
