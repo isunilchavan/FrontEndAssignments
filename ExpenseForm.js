@@ -2,22 +2,59 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
+  // 1st way to use it and we prefer this
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
 
+    //2nd and 3rd way to do this
+
+  //   const [input, setInput] = useState({
+  //     name: "",
+  //     amount: "",
+  //     location: "",
+  //     date: "",
+  //   });
+
   const nameChangeHandler = (event) => {
+    // 1st way to do this and we prefer this only
     setName(event.target.value);
+
+    //2nd way to do this
+    // setInput({
+    //   ...input,
+    //   name: event.target.value,
+    // });
+
+    // 3rd way to do this
+    // setInput((prevState) => {
+    //   return { ...prevState, name: event.target.value };
+    // });
   };
   const amountChangeHandler = (event) => {
     setAmount(event.target.value);
+
+    // setInput({
+    //   ...input,
+    //   amount: event.target.value,
+    // });
   };
   const locationChangeHandler = (event) => {
     setLocation(event.target.value);
+
+    // setInput({
+    //   ...input,
+    //   location: event.target.value,
+    // });
   };
   const dateChangeHandler = (event) => {
     setDate(event.target.value);
+
+    // setInput({
+    //   ...input,
+    //   date: event.target.value,
+    // });
   };
 
   return (
@@ -28,7 +65,7 @@ const ExpenseForm = () => {
           type="text"
           className="form-input"
           onChange={nameChangeHandler}
-          value={name}
+          value={name} //and for 2nd &3rd ways use-> value={input.name}
         />
       </div>
       <div className="form-field">
