@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   // 1st way to use it and we prefer this
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
 
-    //2nd and 3rd way to do this
+  //2nd and 3rd way to do this
 
   //   const [input, setInput] = useState({
   //     name: "",
@@ -58,7 +58,7 @@ const ExpenseForm = () => {
   };
   const submitHandler = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
-    
+
     // Create an object with the form values
     const expenseData = {
       name: name,
@@ -67,9 +67,14 @@ const ExpenseForm = () => {
       date: date,
     };
 
-    console.log(expenseData);
+    props.onSaveExpenseData(expenseData); //console.log(expenseData);
+    // Reset the form fields
+    setName("");
+    setAmount("");
+    setLocation("");
+    setDate("");
   };
-  
+
   return (
     <form onSubmit={submitHandler} className="form-container">
       <div className="form-field">
