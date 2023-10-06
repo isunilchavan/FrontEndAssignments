@@ -1,46 +1,30 @@
-import ExpenseItem from './components/Expenses/ExpenseItem.js';
-import NewExpense from './components/NewExpense/NewExpense';
-function App() {
-  const expenses = [
-    { name: "Food", amount: 10, location: "Grocery Store" },
-    { name: "Petrol", amount: 100, location: "Gas Station" },
-    { name: "Movies", amount: 200, location: "Movie Theater" },
-    { name: "Party", amount: 10000, location: "Bangalore" },
-  ];
+import React, { useState } from "react";
 
-  const addExpenseHandler= expense=>{
-    console.log('In App.js');
-    console.log(expense);
-  }
-    return (
-      <div>
-       <NewExpense onAddExpense={addExpenseHandler}/>
-        <ExpenseItem
-        name={expenses[0].name}
-        amount={expenses[0].amount}
-        location={expenses[0].location}
-        date={new Date()}
-        ></ExpenseItem>
-        <ExpenseItem
-        name={expenses[1].name}
-        amount={expenses[1].amount}
-        location={expenses[1].location}
-        date={new Date()}
-        ></ExpenseItem>
-        <ExpenseItem
-        name={expenses[2].name}
-        amount={expenses[2].amount}
-        location={expenses[2].location}
-        date={new Date()}
-        ></ExpenseItem>
-        <ExpenseItem
-        name={expenses[3].name}
-        amount={expenses[3].amount}
-        location={expenses[3].location}
-        date={new Date()}
-        ></ExpenseItem>
-      </div>
-    );
-  }
-  
-  export default App;
+import NewExpense from "./components/NewExpense/NewExpense";
+
+import Expenses from "./components/Expenses/Expenses";
+
+const DUMMY_EXPENSES = [
+  { id: "e1", name: "Food", amount: 10, location: "Grocery Store" },
+  { id: "e2", name: "Petrol", amount: 100, location: "Gas Station" },
+  { id: "e3", name: "Movies", amount: 200, location: "Movie Theater" },
+  { id: "e4", name: "Party", amount: 10000, location: "Bangalore" },
+];
+
+function App() {
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
+  };
+
+  return (
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses expenses={expenses} />
+    </div>
+  );
+}
+
+export default App;
