@@ -56,9 +56,22 @@ const ExpenseForm = () => {
     //   date: event.target.value,
     // });
   };
+  const submitHandler = (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    
+    // Create an object with the form values
+    const expenseData = {
+      name: name,
+      amount: amount,
+      location: location,
+      date: date,
+    };
 
+    console.log(expenseData);
+  };
+  
   return (
-    <form className="form-container">
+    <form onSubmit={submitHandler} className="form-container">
       <div className="form-field">
         <label>Name</label>
         <input
